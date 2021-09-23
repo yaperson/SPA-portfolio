@@ -1,3 +1,5 @@
+import InfoService from '/services/infoVeil.js'
+
 export default class {
     async header() {
         let titleElement = document.createElement('div')
@@ -8,16 +10,41 @@ export default class {
     async content() {
         let itemsElement = document.createElement('div')
         itemsElement.classList.add('home')
-    
+        let data = await InfoService.getInfo()
+        
+        for (let item of data.servicesworker) {
+            createPostVeil.call(this, item)
+        }
+
         createOptionItem.call(this)
         
-        return itemsElement
         
+        return itemsElement
+
+        function createPostVeil(item) {
+            let itemElement = document.createElement('div')
+            itemElement.classList.add('postVeil')
+
+            let itemTitleElement = document.createElement('div')
+            itemTitleElement.classList.add('Post__title')
+
+            let itemDescription = document.createElement('span')
+            itemDescription.classList.add('Post__description')
+            
+            itemElement.append(itemTitleElement)
+            itemElement.append(itemDescription)
+
+            itemTitleElement.innerHTML = item.name || 'JavaScript'
+            itemDescription.innerHTML = item.description || '30%'
+
+            itemsElement.append(itemElement)
+        }
 
         function createOptionItem() {
             
             let itemElement = document.createElement('button')
             itemElement.classList.add('toogleDark')
+            itemElement.innerHTML = "DarkMode"
             itemElement.addEventListener('click', () => this.#item_click_handler())
 
                 itemsElement.append(itemElement)

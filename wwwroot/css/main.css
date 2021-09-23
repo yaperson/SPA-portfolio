@@ -33,13 +33,13 @@ h1{
     padding-top: 15px;
 }
 
-.ReportList{
+.Post__description{
   display: grid;
   gap:1em;
   padding: 1em;
 }
 
-.Report {
+.postVeil {
     display: grid;
     align-items: center;
     padding: var(--report-padding);
@@ -47,26 +47,8 @@ h1{
     cursor: pointer;
 }
 
-.Report__title{
+.Post__title{
   font-size:2em;
-}
-
-.Report-state-new{
-    border-left:solid var(--report-status-width) rgb(138, 138, 138);  
-}
-
-.Report-state-active{
-  border-left:solid var(--report-status-width) var(--report-active-color);
-
-}
-
-.Report-state-closed{
-  border-left:solid var(--report-status-width) var(--report-closed-color);
-
-}
-
-.Report-state-no{
-  border-left:solid var(--report-status-width) var(--report-no-color);
 }
 
 
